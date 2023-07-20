@@ -20,7 +20,8 @@ const TaskHeader = ({ taskInfo, setTaskInfo, items }) => {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
+  const handleClose = (value) => {
+    console.log("value ", value);
     setAnchorEl(null);
   };
 
@@ -68,17 +69,13 @@ const TaskHeader = ({ taskInfo, setTaskInfo, items }) => {
             },
           }}
         >
-          {options.map((option) => (
-            <MenuItem
-              key={option}
-              selected={option === "Pyxis"}
-              onClick={handleClose}
-            >
-              {option}
-            </MenuItem>
-          ))}
+          <MenuItem onClick={() => handleClose("remove")}>{"Remove"}</MenuItem>
+          <MenuItem onClick={() => handleClose("edit")}>{"Edit"}</MenuItem>
         </Menu>
-        <BsThreeDots onClick={(e) => handleClick(e)} className="fill-darkSkyBlue mr-3.5" />
+        <BsThreeDots
+          onClick={(e) => handleClick(e)}
+          className="fill-darkSkyBlue mr-3.5"
+        />
         <div
           className="h-4 w-4 cursor-pointer"
           onClick={() => setTaskInfo(!taskInfo)}
