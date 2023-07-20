@@ -8,7 +8,7 @@ const SET_TASK_DATA = (
       server_ip: "10.19.19.23",
       nat_space_id: "12",
       server_nat_ip: "122.12.19.21",
-      status: "online",
+      status: "Online",
       uniqueId: "12345",
     },
     {
@@ -17,7 +17,7 @@ const SET_TASK_DATA = (
       server_ip: "10.19.19.23",
       nat_space_id: "1",
       server_nat_ip: "122.12.19.21",
-      status: "online",
+      status: "Online",
       uniqueId: "12346",
     },
     {
@@ -26,7 +26,7 @@ const SET_TASK_DATA = (
       server_ip: "10.19.19.23",
       nat_space_id: "12",
       server_nat_ip: "122.12.19.21",
-      status: "error",
+      status: "Error",
       uniqueId: "12347",
     },
     {
@@ -35,7 +35,7 @@ const SET_TASK_DATA = (
       server_ip: "10.19.19.23",
       nat_space_id: "15",
       server_nat_ip: "122.12.19.21",
-      status: "online",
+      status: "Online",
       uniqueId: "12348",
     },
     {
@@ -44,7 +44,7 @@ const SET_TASK_DATA = (
       server_ip: "10.19.19.23",
       nat_space_id: "14",
       server_nat_ip: "122.12.19.21",
-      status: "error",
+      status: "Error",
       uniqueId: "12349",
     },
     {
@@ -53,7 +53,7 @@ const SET_TASK_DATA = (
       server_ip: "10.19.19.23",
       nat_space_id: "13",
       server_nat_ip: "122.12.19.21",
-      status: "online",
+      status: "Online",
       uniqueId: "12311",
     },
   ],

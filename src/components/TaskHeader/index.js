@@ -55,7 +55,7 @@ const TaskHeader = ({ taskInfo, setTaskInfo, items }) => {
           <img
             alt="success"
             className="h-3 w-3 mr-1 mt-0.5"
-            src={Resources.images.mainPage.success}
+            src={items.status === "Online" ? Resources.images.mainPage.success : Resources.images.mainPage.error}
           />
           <p className="font-semibold text-[0.7rem] text-nero">
             {items.status}
