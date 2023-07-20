@@ -6,11 +6,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        slateGrey: "#E5E7EB",
+        slateGrey: "#F3F3F4",
         skyBlue: "#87CEEB",
-        darkSkyBlue: "#448EE4"
+        darkSkyBlue: "#448EE4",
+        crimson: "#CB0736",
+        nero: "#252525",
       },
       fontFamily: {
+        Inter: "Inter",
         mulish: "Mulish",
       },
     },
