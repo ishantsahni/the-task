@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        grey: "#828282"
+        slateGrey: "#E5E7EB",
       },
       fontFamily: {
         mulish: "Mulish",
