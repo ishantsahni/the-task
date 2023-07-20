@@ -11,6 +11,7 @@ const TaskHeader = () => {
           <Checkbox
             //    {...label}
             sx={{ "& .MuiSvgIcon-root": { fontSize: 22 } }}
+            className="!p-0"
             defaultChecked
           />
           <div>
