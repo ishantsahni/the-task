@@ -10,8 +10,8 @@ const TaskHeader = () => {
         <div className="flex">
           <Checkbox
             //    {...label}
-            sx={{ "& .MuiSvgIcon-root": { fontSize: 22 } }}
-            className="!p-0"
+            sx={{ "& .MuiSvgIcon-root": { fontSize: 20 } }}
+            className="!p-0 !h-[20px]"
             defaultChecked
           />
           <div>
