@@ -13,7 +13,7 @@ const TaskHeader = ({taskInfo, setTaskInfo, items}) => {
             //    {...label}
             sx={{ "& .MuiSvgIcon-root": { fontSize: 20 } }}
             className="!p-0 !h-[20px] !mr-3"
-            defaultChecked
+            defaultChecked={false}
           />
           <div>
             <p className="font-semibold text-[0.7rem] text-nero">
