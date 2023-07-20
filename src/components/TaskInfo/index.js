@@ -1,8 +1,8 @@
 import React from "react";
 
-const TaskInfo = () => {
+const TaskInfo = ({taskInfo}) => {
   return (
-    <div className="font-Inter mt-4">
+    <div className={`font-Inter mt-4 ${taskInfo ? "" : "hidden"}`}>
       <div className="bg-slateGrey py-2 px-3.5">
         <p className="font-medium text-[0.7rem] text-nero">GENERAL INFO</p>
         <div className="flex">
