@@ -9,18 +9,27 @@ import {
 import { BsThreeDots } from "react-icons/bs";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { useDispatch } from "react-redux";
+import { REMOVE_TASK_DATA } from "../../redux/Actions/common";
 
 const options = ["Remove", "Edit"];
 
 const ITEM_HEIGHT = 48;
 
 const TaskHeader = ({ taskInfo, setTaskInfo, items }) => {
+  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = (value) => {
+  const handleClose = (value, id) => {
+    if(value === "remove") {
+      console.log("called ", id);
+      dispatch(REMOVE_TASK_DATA({ uniqueId: id}))
+    } else {
+      console.log("edit clicked");
+    }
     console.log("value ", value);
     setAnchorEl(null);
   };
@@ -69,8 +78,8 @@ const TaskHeader = ({ taskInfo, setTaskInfo, items }) => {
             },
           }}
         >
-          <MenuItem onClick={() => handleClose("remove")}>{"Remove"}</MenuItem>
-          <MenuItem onClick={() => handleClose("edit")}>{"Edit"}</MenuItem>
+          <MenuItem onClick={() => handleClose("remove", items.uniqueId)}>{"Remove"}</MenuItem>
+          <MenuItem onClick={() => handleClose("edit", items.uniqueId)}>{"Edit"}</MenuItem>
         </Menu>
         <BsThreeDots
           onClick={(e) => handleClick(e)}
