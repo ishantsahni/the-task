@@ -3,7 +3,7 @@ import React from "react";
 const TaskInfo = () => {
   return (
     <div className="font-Inter">
-      <div className="bg-slateGrey">
+      <div className="bg-slateGrey py-2 px-3.5">
         <p className="font-medium text-[0.7rem] text-nero">GENERAL INFO</p>
         <div className="flex">
           <p className="font-semibold text-[0.7rem] text-nero">
