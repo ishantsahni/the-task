@@ -51,7 +51,7 @@ const TaskHeader = ({ taskInfo, setTaskInfo, items }) => {
             <p className="text-[0.7rem] text-nero">{items.description}</p>
           </div>
         </div>
-        <div className="flex">
+        <div className={`flex ${items.status === "Online" ? "" : "!mr-2"}`}>
           <img
             alt="success"
             className="h-3 w-3 mr-1 mt-0.5"
