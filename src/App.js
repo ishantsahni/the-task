@@ -1,11 +1,15 @@
-import { Button } from '@mui/material';
-import './App.css';
+import "./App.css";
+import MainPage from "./components/MainPage";
+import { HashRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <p className="underline">Ishant</p>
-      <Button variant="text">Text</Button>
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+        </Routes>
+      </HashRouter>
     </div>
   );
 }
