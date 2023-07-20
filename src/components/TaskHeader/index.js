@@ -4,7 +4,7 @@ import { Resources } from "../../config/Resources";
 import { AiOutlineDown, AiOutlineDownSquare, AiOutlineUpSquare } from "react-icons/ai";
 import { BsThreeDots } from "react-icons/bs";
 
-const TaskHeader = ({taskInfo, setTaskInfo}) => {
+const TaskHeader = ({taskInfo, setTaskInfo, items}) => {
   return (
     <div className="flex ishant w-full justify-between">
       <div className="flex w-2/5 justify-between">
@@ -17,9 +17,9 @@ const TaskHeader = ({taskInfo, setTaskInfo}) => {
           />
           <div>
             <p className="font-semibold text-[0.7rem] text-nero">
-              ZTP_suresh-cdc_6782530715194866100
+              {items.name}
             </p>
-            <p className="text-[0.7rem] text-nero">Description Obj</p>
+            <p className="text-[0.7rem] text-nero">{items.description}</p>
           </div>
         </div>
         <div className="flex">
@@ -28,7 +28,7 @@ const TaskHeader = ({taskInfo, setTaskInfo}) => {
             className="h-3 w-3 mr-1 mt-0.5"
             src={Resources.images.mainPage.success}
           />
-          <p className="font-semibold text-[0.7rem] text-nero">Online</p>
+          <p className="font-semibold text-[0.7rem] text-nero">{items.status}</p>
         </div>
       </div>
       <div className="flex">
