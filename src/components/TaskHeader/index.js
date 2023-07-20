@@ -11,20 +11,20 @@ const TaskHeader = () => {
           <Checkbox
             //    {...label}
             sx={{ "& .MuiSvgIcon-root": { fontSize: 20 } }}
-            className="!p-0 !h-[20px]"
+            className="!p-0 !h-[20px] !mr-3"
             defaultChecked
           />
           <div>
             <p className="font-semibold text-[0.7rem] text-nero">ZTP_suresh-cdc_6782530715194866100</p>
             <p className="text-[0.7rem] text-nero">Description Obj</p>
           </div>
-          <div className="flex">
+          <div className="flex items-center">
             <img
               alt="success"
-              className="h-4 w-4"
+              className="h-3 w-3 mr-1"
               src={Resources.images.mainPage.success}
             />
-            <p>Online</p>
+            <p className="font-semibold text-[0.7rem] text-nero">Online</p>
           </div>
         </div>
         <div className="flex">
