@@ -33,7 +33,7 @@ const TaskHeader = ({taskInfo, setTaskInfo}) => {
       </div>
       <div className="flex">
         <BsThreeDots className="fill-darkSkyBlue mr-3.5" />
-        <div className="h-4 w-4" onClick={() => setTaskInfo(!taskInfo)}>
+        <div className="h-4 w-4 cursor-pointer" onClick={() => setTaskInfo(!taskInfo)}>
           {taskInfo ? <AiOutlineUpSquare className="fill-darkSkyBlue !border-0 rounded-2xl" /> : <AiOutlineDownSquare className="fill-darkSkyBlue !border-0 rounded-2xl" />}
         </div>
       </div>
