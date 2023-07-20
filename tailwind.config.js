@@ -7,6 +7,8 @@ module.exports = {
     extend: {
       colors: {
         slateGrey: "#E5E7EB",
+        skyBlue: "#87CEEB",
+        darkSkyBlue: "#448EE4"
       },
       fontFamily: {
         mulish: "Mulish",
