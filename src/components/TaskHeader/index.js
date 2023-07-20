@@ -32,7 +32,7 @@ const TaskHeader = () => {
         </div>
       </div>
       <div className="flex">
-        <BsThreeDots className="fill-darkSkyBlue" />
+        <BsThreeDots className="fill-darkSkyBlue mr-3.5" />
         <div className="h-4 w-4">
           <AiOutlineDownSquare className="fill-darkSkyBlue !border-0 rounded-2xl" />
         </div>
