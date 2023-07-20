@@ -6,7 +6,7 @@ const MainPage = () => {
     <div>
       <div className="w-4/5 mx-auto text-left pt-20">
         <div>
-          <p className="text-4xl">Main page</p>
+          <p className="text-4xl mb-8">Main page</p>
           <TasksBox />
         </div>
       </div>

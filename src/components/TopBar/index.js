@@ -5,11 +5,11 @@ const TopBar = () => {
   return (
     <div className="flex justify-between items-center">
       <div>
-        <Button variant="contained" sx={{textTransform: "none"}}>Create Server</Button>
-        <Button variant="outlined" sx={{textTransform: "none"}} className="!text-black !border-black !mx-4">
+        <Button className="!h-7" size="small" variant="contained" sx={{textTransform: "none"}}>Create Server</Button>
+        <Button size="small" variant="outlined" sx={{textTransform: "none"}} className="!text-black !border-black !mx-4 !h-7">
           Edit
         </Button>
-        <Button variant="outlined" sx={{textTransform: "none"}} className="!text-black !border-black">
+        <Button size="small" variant="outlined" sx={{textTransform: "none"}} className="!text-black !border-black !h-7">
           Remove
         </Button>
       </div>
