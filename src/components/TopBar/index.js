@@ -53,12 +53,12 @@ const TopBar = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <form onSubmit={formik.handleSubmit}>
-          <Box sx={style}>
+        <Box sx={style}>
+          <div>
             <div>
-              <div>
-                <p className="font-mulish">Create Server</p>
-              </div>
+              <p className="font-mulish">Create Server</p>
+            </div>
+            <form onSubmit={formik.handleSubmit}>
               <ServerForm formik={formik} />
               <div>
                 <Button
@@ -66,23 +66,29 @@ const TopBar = () => {
                   size="small"
                   variant="contained"
                   sx={{ textTransform: "none" }}
-                  onClick={() => handleCloseModal()}
+                  onClick={() => {
+                    handleCloseModal();
+                  }}
                 >
                   Cancel
                 </Button>
                 <Button
                   className="!h-7 cursor-pointer"
                   size="small"
+                  type="submit"
                   variant="contained"
                   sx={{ textTransform: "none" }}
-                  onClick={() => handleCloseModal()}
+                  onClick={() => {
+                    formik.handleSubmit();
+                    handleCloseModal();
+                  }}
                 >
                   Save & Close
                 </Button>
               </div>
-            </div>
-          </Box>
-        </form>
+            </form>
+          </div>
+        </Box>
       </Modal>
       <div>
         <Button

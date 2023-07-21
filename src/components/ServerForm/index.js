@@ -104,7 +104,6 @@ const ServerForm = ({ formik }) => {
         onBlur={formik.handleBlur}
         value={formik.values.addressId}
       />
-      <button type="submit">Submit</button>
     </div>
   );
 };
