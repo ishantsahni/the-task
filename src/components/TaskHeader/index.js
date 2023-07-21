@@ -10,7 +10,7 @@ import { BsThreeDots } from "react-icons/bs";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useDispatch } from "react-redux";
-import { REMOVE_TASK_DATA } from "../../redux/Actions/common";
+import { ADD_SELECTED_TASK_DATA, REMOVE_TASK_DATA } from "../../redux/Actions/common";
 
 const options = ["Remove", "Edit"];
 
@@ -43,6 +43,9 @@ const TaskHeader = ({ taskInfo, setTaskInfo, items }) => {
             //    {...label}
             checked={isChecked}
             onChange={(e) => {
+              if(e.target.checked) {
+                dispatch(ADD_SELECTED_TASK_DATA(items));
+              }
               console.log("e ", e.target.checked);
               setIsChecked(e.target.checked);
             }}

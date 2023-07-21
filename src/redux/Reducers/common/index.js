@@ -1,4 +1,4 @@
-import { ADD_TASK, REMOVE_TASK } from "../../Types/common";
+import { ADD_SELECTED_TASK, ADD_TASK, REMOVE_TASK } from "../../Types/common";
 
 const SET_TASK_DATA = (
   state = [
@@ -74,4 +74,14 @@ const SET_TASK_DATA = (
   }
 };
 
-export { SET_TASK_DATA };
+const SET_SELECTED_TASK_DATA = (state = [], action) => {
+  const {type, payload } = action;
+  switch(type) {
+    case ADD_SELECTED_TASK:
+      return [...state, { ...payload }];
+    default: 
+    return state;
+  }
+}
+
+export { SET_TASK_DATA, SET_SELECTED_TASK_DATA };
