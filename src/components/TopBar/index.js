@@ -1,5 +1,6 @@
 import { Box, Button, Modal, TextField } from "@mui/material";
 import React, { useState } from "react";
+import ServerForm from "../ServerForm";
 
 const style = {
   position: "absolute",
@@ -33,6 +34,7 @@ const TopBar = () => {
             <div>
               <p className="font-mulish">Create Server</p>
             </div>
+            <ServerForm />
             <div>
               <Button
                 className="!h-7 cursor-pointer"
