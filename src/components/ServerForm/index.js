@@ -84,7 +84,7 @@ const ServerForm = ({ formik, modalText }) => {
         type="text"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        value={formik.values.spaceId}
+        value={modalText === "edit" ? items.filter(item => item.id === selectedTaskList[0].nat_space_id)[0].name : formik.values.spaceId}
       >
         {items.map((item) => (
           <MenuItem key={item.id} value={item.name}>

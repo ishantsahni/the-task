@@ -76,6 +76,7 @@ const TopBar = () => {
       addressId: Yup.string().required("Required"),
     }),
     onSubmit: (values) => {
+      console.log("values ", values, items.filter((item) => item.name === values.spaceId));
       dispatch(
         ADD_TASK_DATA({
           name: values.name,
