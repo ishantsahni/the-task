@@ -11,9 +11,36 @@ const ServerForm = () => {
 
   console.log("nat space ", natSpace);
 
+  const items = [
+    {
+      id: "1",
+      name: "Box",
+    },
+    {
+      id: "12",
+      name: "DoS",
+    },
+    {
+      id: "13",
+      name: "Server Box",
+    },
+    {
+      id: "14",
+      name: "Nat-vat",
+    },
+    {
+      id: "15",
+      name: "Zth-vtc-1275844",
+    },
+    {
+      id: "17",
+      name: "GBD",
+    },
+  ];
+
   return (
     <div className="flex flex-col">
-        <InputLabel id="demo-simple-select-label">Name</InputLabel>
+      <InputLabel id="demo-simple-select-label">Name</InputLabel>
       <TextField
         className="bg-slateGrey"
         autoComplete="off"
@@ -41,56 +68,11 @@ const ServerForm = () => {
         // placeholder="Select NAT Space"
         onChange={handleChange}
       >
-        <MenuItem
-            // value={{
-            //   id: "1",
-            //   name: "Box",
-            // }}
-          value={"Box"}
-        >
-          Ten
-        </MenuItem>
-        <MenuItem
-            // value={{
-            //   id: "12",
-            //   name: "DoS",
-            // }}
-          value={"DoS"}
-        >
-          DoS
-        </MenuItem>
-        {/* <MenuItem
-          value={{
-            id: "13",
-            name: "Server Box",
-          }}
-        >
-          Server Box
-        </MenuItem>
-        <MenuItem
-          value={{
-            id: "14",
-            name: "Nat-vat",
-          }}
-        >
-          Nat-vat
-        </MenuItem>
-        <MenuItem
-          value={{
-            id: "15",
-            name: "Zth-vtc-1275844",
-          }}
-        >
-          Zth-vtc-1275844
-        </MenuItem>
-        <MenuItem
-          value={{
-            id: "17",
-            name: "GBD",
-          }}
-        >
-          GBD
-        </MenuItem> */}
+        {items.map((item) => (
+          <MenuItem key={item.id} value={item.name}>
+            {item.name}
+          </MenuItem>
+        ))}
       </Select>
       <InputLabel id="demo-simple-select-label">IP Address</InputLabel>
       <TextField
