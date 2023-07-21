@@ -77,7 +77,8 @@ const TopBar = () => {
         nat_space_id: items.filter(item => item.name === values.spaceId)[0]?.id,
         server_nat_ip: values.addressId,
         server_ip: "10.19.19.23",
-        status: "Error" 
+        status: "Error",
+        uniqueId: Date.now().toString(), 
       }))
       console.log("values ", values);
     },
