@@ -1,6 +1,7 @@
 import {
   ADD_SELECTED_TASK,
   ADD_TASK,
+  REMOVE_GROUP_TASK,
   REMOVE_SELECTED_TASK,
   REMOVE_TASK,
 } from "../../Types/common";
@@ -74,6 +75,11 @@ const SET_TASK_DATA = (
       );
       return [...newState];
     }
+    case REMOVE_GROUP_TASK:
+      const newState = state.filter(
+        (item) => !payload.removeList.includes(item.uniqueId)
+      );
+      return [...newState];
     default:
       return state;
   }

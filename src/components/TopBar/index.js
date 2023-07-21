@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import ServerForm from "../ServerForm";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useDispatch } from "react-redux";
-import { ADD_TASK_DATA } from "../../redux/Actions/common";
+import { useDispatch, useSelector } from "react-redux";
+import { ADD_TASK_DATA, REMOVE_GROUP_TASK_DATA } from "../../redux/Actions/common";
 
 const style = {
   position: "absolute",
@@ -48,6 +48,7 @@ const items = [
 const TopBar = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const dispatch = useDispatch();
+  const selectedTaskList = useSelector(state => state.selectedTaskList);
 
   const handleCloseModal = () => {
     setModalOpen(false);
@@ -150,6 +151,13 @@ const TopBar = () => {
         <Button
           size="small"
           variant="outlined"
+          disabled={selectedTaskList.length < 1}
+          onClick={() => {
+            const list = selectedTaskList.map(item => item.uniqueId);
+            dispatch(REMOVE_GROUP_TASK_DATA({
+              removeList: list
+            }))
+          }}
           sx={{ textTransform: "none" }}
           className="!text-black !border-black !h-7"
         >
