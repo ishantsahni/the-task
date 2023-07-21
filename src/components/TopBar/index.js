@@ -60,7 +60,7 @@ const TopBar = () => {
             </div>
             <form onSubmit={formik.handleSubmit}>
               <ServerForm formik={formik} />
-              <div>
+              <div className="flex justify-between mt-2">
                 <Button
                   className="!h-7 cursor-pointer"
                   size="small"

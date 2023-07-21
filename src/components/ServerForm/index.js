@@ -37,7 +37,7 @@ const ServerForm = ({ formik }) => {
 
   return (
     <div className="flex flex-col">
-      <InputLabel id="demo-simple-select-label">Name</InputLabel>
+      <InputLabel className="mt-4" id="demo-simple-select-label">Name</InputLabel>
       <TextField
         className="bg-slateGrey"
         autoComplete="off"
@@ -52,7 +52,7 @@ const ServerForm = ({ formik }) => {
         onBlur={formik.handleBlur}
         value={formik.values.name}
       />
-      <InputLabel id="demo-simple-select-label">Description</InputLabel>
+      <InputLabel className="mt-4" id="demo-simple-select-label">Description</InputLabel>
       <TextField
         className="bg-slateGrey"
         autoComplete="off"
@@ -67,7 +67,7 @@ const ServerForm = ({ formik }) => {
         onBlur={formik.handleBlur}
         value={formik.values.description}
       />
-      <InputLabel id="demo-simple-select-label">NAT Space</InputLabel>
+      <InputLabel className="mt-4" id="demo-simple-select-label">NAT Space</InputLabel>
       <Select
         // labelId="demo-simple-select-label"
         // id="demo-simple-select"
@@ -89,7 +89,7 @@ const ServerForm = ({ formik }) => {
           </MenuItem>
         ))}
       </Select>
-      <InputLabel id="demo-simple-select-label">IP Address</InputLabel>
+      <InputLabel className="mt-4" id="demo-simple-select-label">IP Address</InputLabel>
       <TextField
         className="bg-slateGrey"
         autoComplete="off"
