@@ -49,7 +49,7 @@ const items = [
   },
 ];
 
-const TopBar = () => {
+const TopBar = ({ setSearchString }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalText, setModalText] = useState("");
   const dispatch = useDispatch();
@@ -204,6 +204,10 @@ const TopBar = () => {
             },
           }}
           autoComplete="off"
+          onChange={(event) => {
+            console.log("event value ", event.target.value);
+            setSearchString(event.target.value);
+          }}
           placeholder="Search by name.."
           id="outlined-basic"
           label=""
