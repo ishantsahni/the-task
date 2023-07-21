@@ -1,34 +1,34 @@
 import { InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import { useState } from "react";
-import * as Yup from 'yup';
+import * as Yup from "yup";
 
 const items = [
-    {
-      id: "1",
-      name: "Box",
-    },
-    {
-      id: "12",
-      name: "DoS",
-    },
-    {
-      id: "13",
-      name: "Server Box",
-    },
-    {
-      id: "14",
-      name: "Nat-vat",
-    },
-    {
-      id: "15",
-      name: "Zth-vtc-1275844",
-    },
-    {
-      id: "17",
-      name: "GBD",
-    },
-  ];
+  {
+    id: "1",
+    name: "Box",
+  },
+  {
+    id: "12",
+    name: "DoS",
+  },
+  {
+    id: "13",
+    name: "Server Box",
+  },
+  {
+    id: "14",
+    name: "Nat-vat",
+  },
+  {
+    id: "15",
+    name: "Zth-vtc-1275844",
+  },
+  {
+    id: "17",
+    name: "GBD",
+  },
+];
 
 const ServerForm = () => {
   const [natSpace, setNatSpace] = useState("");
@@ -42,20 +42,22 @@ const ServerForm = () => {
 
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
+      name: "",
+      description: "",
+      spaceId: "",
+      addressId: "",
     },
     validationSchema: Yup.object({
-      firstName: Yup.string()
-        .max(15, 'Must be 15 characters or less')
-        .required('Required'),
-      lastName: Yup.string()
-        .max(20, 'Must be 20 characters or less')
-        .required('Required'),
-      email: Yup.string().email('Invalid email address').required('Required'),
+      name: Yup.string()
+        .max(256, "Must be 256 characters or less")
+        .required("Required"),
+      description: Yup.string()
+        .max(256, "Must be 256 characters or less")
+        .required("Required"),
+      spaceId: Yup.string().required("Required"),
+      addressId: Yup.string().required("Required"),
     }),
-    onSubmit: values => {
+    onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
     },
   });
