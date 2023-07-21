@@ -29,30 +29,57 @@ const TopBar = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <div className="flex flex-col justify-around h-full">
-            <div className="mx-auto">
-              <p className="font-mulish">
-                You are not authorized to access this service.
-              </p>
+          <div>
+            <div>
+              <p className="font-mulish">Create Server</p>
             </div>
-            <div className="flex justify-center">
+            <div>
               <Button
-                className="cursor-pointer"
+                className="!h-7 cursor-pointer"
+                size="small"
                 variant="contained"
+                sx={{ textTransform: "none" }}
                 onClick={() => handleCloseModal()}
               >
-                Close
+                Cancel
+              </Button>
+              <Button
+                className="!h-7 cursor-pointer"
+                size="small"
+                variant="contained"
+                sx={{ textTransform: "none" }}
+                onClick={() => handleCloseModal()}
+              >
+                Save & Close
               </Button>
             </div>
           </div>
         </Box>
       </Modal>
       <div>
-        <Button onClick={() => setModalOpen(true)} className="!h-7" size="small" variant="contained" sx={{textTransform: "none"}}>Create Server</Button>
-        <Button size="small" variant="outlined" sx={{textTransform: "none"}} className="!text-black !border-black !mx-4 !h-7">
+        <Button
+          onClick={() => setModalOpen(true)}
+          className="!h-7"
+          size="small"
+          variant="contained"
+          sx={{ textTransform: "none" }}
+        >
+          Create Server
+        </Button>
+        <Button
+          size="small"
+          variant="outlined"
+          sx={{ textTransform: "none" }}
+          className="!text-black !border-black !mx-4 !h-7"
+        >
           Edit
         </Button>
-        <Button size="small" variant="outlined" sx={{textTransform: "none"}} className="!text-black !border-black !h-7">
+        <Button
+          size="small"
+          variant="outlined"
+          sx={{ textTransform: "none" }}
+          className="!text-black !border-black !h-7"
+        >
           Remove
         </Button>
       </div>
@@ -63,7 +90,7 @@ const TopBar = () => {
             style: {
               borderRadius: "33px",
               borderWidth: "0px",
-              borderColor: "black"
+              borderColor: "black",
             },
           }}
           autoComplete="off"
