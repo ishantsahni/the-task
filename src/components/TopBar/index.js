@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import ServerForm from "../ServerForm";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import { ADD_TASK_DATA } from "../../redux/Actions/common";
 
 const style = {
   position: "absolute",
@@ -16,8 +18,36 @@ const style = {
   p: 4,
 };
 
+const items = [
+  {
+    id: "1",
+    name: "Box",
+  },
+  {
+    id: "12",
+    name: "DoS",
+  },
+  {
+    id: "13",
+    name: "Server Box",
+  },
+  {
+    id: "14",
+    name: "Nat-vat",
+  },
+  {
+    id: "15",
+    name: "Zth-vtc-1275844",
+  },
+  {
+    id: "17",
+    name: "GBD",
+  },
+];
+
 const TopBar = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const handleCloseModal = () => {
     setModalOpen(false);
@@ -41,6 +71,14 @@ const TopBar = () => {
       addressId: Yup.string().required("Required"),
     }),
     onSubmit: (values) => {
+      dispatch(ADD_TASK_DATA({
+        name: values.name,
+        description: values.description,
+        nat_space_id: items.filter(item => item.name === values.spaceId)[0]?.id,
+        server_nat_ip: values.addressId,
+        server_ip: "10.19.19.23",
+        status: "Error" 
+      }))
       console.log("values ", values);
     },
   });
