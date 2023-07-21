@@ -52,7 +52,8 @@ const ServerForm = ({ formik, modalText }) => {
         type="text"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        value={modalText === "edit" ? selectedTaskList[0].name : formik.values.name}
+        // value={modalText === "edit" ? selectedTaskList[0].name : formik.values.name}
+        value={formik.values.name}
       />
       <InputLabel className="mt-4" id="demo-simple-select-label">Description</InputLabel>
       <TextField
@@ -67,7 +68,8 @@ const ServerForm = ({ formik, modalText }) => {
         type="text"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        value={modalText === "edit" ? selectedTaskList[0].description : formik.values.description}
+        // value={modalText === "edit" ? selectedTaskList[0].description : formik.values.description}
+        value={formik.values.description}
       />
       <InputLabel className="mt-4" id="demo-simple-select-label">NAT Space</InputLabel>
       <Select
@@ -105,7 +107,8 @@ const ServerForm = ({ formik, modalText }) => {
         type="text"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        value={modalText === "edit" ? selectedTaskList[0].server_nat_ip : formik.values.addressId}
+        // value={modalText === "edit" ? selectedTaskList[0].server_nat_ip : formik.values.addressId}
+        value={formik.values.addressId}
       />
     </div>
   );

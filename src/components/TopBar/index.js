@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import {
   ADD_TASK_DATA,
+  EDIT_TASK_DATA,
   REMOVE_GROUP_TASK_DATA,
 } from "../../redux/Actions/common";
 
@@ -77,18 +78,27 @@ const TopBar = () => {
     }),
     onSubmit: (values) => {
       console.log("values ", values, items.filter((item) => item.name === values.spaceId));
-      dispatch(
-        ADD_TASK_DATA({
+      if(modalText === "edit") {
+        dispatch(EDIT_TASK_DATA({
+          ...selectedTaskList[0],
           name: values.name,
           description: values.description,
-          nat_space_id: items.filter((item) => item.name === values.spaceId)[0]
-            ?.id,
-          server_nat_ip: values.addressId,
-          server_ip: "10.19.19.23",
-          status: "Error",
-          uniqueId: Date.now().toString(),
-        })
-      );
+          server_nat_ip: values.addressId
+        }))
+      } else {
+        dispatch(
+          ADD_TASK_DATA({
+            name: values.name,
+            description: values.description,
+            nat_space_id: items.filter((item) => item.name === values.spaceId)[0]
+              ?.id,
+            server_nat_ip: values.addressId,
+            server_ip: "10.19.19.23",
+            status: "Error",
+            uniqueId: Date.now().toString(),
+          })
+        );
+      }
       console.log("values ", values);
     },
   });
