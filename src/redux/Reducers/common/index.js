@@ -1,7 +1,10 @@
 import {
   ADD_SELECTED_TASK,
   ADD_TASK,
+  CLOSE_MODAL,
+  EDIT_ONE_TASK,
   EDIT_TASK,
+  OPEN_MODAL,
   REMOVE_GROUP_TASK,
   REMOVE_SELECTED_TASK,
   REMOVE_TASK,
@@ -102,9 +105,32 @@ const SET_SELECTED_TASK_DATA = (state = [], action) => {
         (item) => item.uniqueId !== payload.uniqueId
       );
       return [...newState];
+    case EDIT_ONE_TASK:
+      return [{ ...payload }];
     default:
       return state;
   }
 };
 
-export { SET_TASK_DATA, SET_SELECTED_TASK_DATA };
+const SET_MY_MODAL_STATE = (
+  state = {
+    isModalOpen: false,
+  },
+  action
+) => {
+  const { type, payload } = action;
+  switch (type) {
+    case OPEN_MODAL:
+      return {
+        isModalOpen: true,
+      };
+    case CLOSE_MODAL:
+      return {
+        isModalOpen: false,
+      };
+    default:
+      return state;
+  }
+};
+
+export { SET_TASK_DATA, SET_SELECTED_TASK_DATA, SET_MY_MODAL_STATE };

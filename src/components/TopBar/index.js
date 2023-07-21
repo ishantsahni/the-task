@@ -8,6 +8,7 @@ import {
   ADD_TASK_DATA,
   EDIT_TASK_DATA,
   REMOVE_GROUP_TASK_DATA,
+  SET_MODAL_CLOSE,
 } from "../../redux/Actions/common";
 
 const style = {
@@ -53,10 +54,12 @@ const TopBar = ({ setSearchString }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalText, setModalText] = useState("");
   const dispatch = useDispatch();
+  const isModalOpen = useSelector(state => state.isModalOpen.isModalOpen);
   const selectedTaskList = useSelector((state) => state.selectedTaskList);
 
   const handleCloseModal = () => {
     setModalOpen(false);
+    dispatch(SET_MODAL_CLOSE());
   };
 
   const formik = useFormik({
@@ -78,7 +81,7 @@ const TopBar = ({ setSearchString }) => {
     }),
     onSubmit: (values) => {
       console.log("values ", values, items.filter((item) => item.name === values.spaceId));
-      if(modalText === "edit") {
+      if(modalText === "") {
         dispatch(EDIT_TASK_DATA({
           ...selectedTaskList[0],
           name: values.name,
@@ -98,6 +101,7 @@ const TopBar = ({ setSearchString }) => {
             uniqueId: Date.now().toString(),
           })
         );
+        setModalText("");
       }
       console.log("values ", values);
     },
@@ -106,7 +110,7 @@ const TopBar = ({ setSearchString }) => {
   return (
     <div className="flex justify-between items-center mb-4">
       <Modal
-        open={modalOpen}
+        open={modalOpen || isModalOpen}
         onClose={handleCloseModal}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
@@ -167,7 +171,7 @@ const TopBar = ({ setSearchString }) => {
           variant="outlined"
           disabled={selectedTaskList.length !== 1}
           onClick={() => {
-            setModalText("edit");
+            setModalText("");
             setModalOpen(true);
           }}
           sx={{ textTransform: "none" }}

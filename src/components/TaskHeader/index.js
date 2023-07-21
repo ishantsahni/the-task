@@ -10,7 +10,7 @@ import { BsThreeDots } from "react-icons/bs";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useDispatch } from "react-redux";
-import { ADD_SELECTED_TASK_DATA, REMOVE_SELECTED_TASK_DATA, REMOVE_TASK_DATA } from "../../redux/Actions/common";
+import { ADD_SELECTED_TASK_DATA, REMOVE_SELECTED_TASK_DATA, REMOVE_TASK_DATA, SET_EDIT_ONE_TASK_DATA, SET_MODAL_CLOSE, SET_MODAL_OPEN } from "../../redux/Actions/common";
 
 const options = ["Remove", "Edit"];
 
@@ -30,6 +30,8 @@ const TaskHeader = ({ taskInfo, setTaskInfo, items }) => {
       dispatch(REMOVE_TASK_DATA({ uniqueId: id }));
     } else {
       console.log("edit clicked");
+      dispatch(SET_MODAL_OPEN());
+      dispatch(SET_EDIT_ONE_TASK_DATA(items));
     }
     console.log("value ", value);
     setAnchorEl(null);

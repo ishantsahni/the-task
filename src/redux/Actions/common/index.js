@@ -1,4 +1,4 @@
-import { ADD_SELECTED_TASK, ADD_TASK, EDIT_TASK, REMOVE_GROUP_TASK, REMOVE_SELECTED_TASK, REMOVE_TASK} from "../../Types/common";
+import { ADD_SELECTED_TASK, ADD_TASK, CLOSE_MODAL, EDIT_ONE_TASK, EDIT_TASK, MODAL_STATE, OPEN_MODAL, REMOVE_GROUP_TASK, REMOVE_SELECTED_TASK, REMOVE_TASK} from "../../Types/common";
 
 export const ADD_TASK_DATA = (payload) => ({
     type: ADD_TASK,
@@ -28,4 +28,17 @@ export const REMOVE_GROUP_TASK_DATA = (payload) => ({
 export const EDIT_TASK_DATA = (payload) => ({
     type: EDIT_TASK,
     payload
+});
+
+export const SET_EDIT_ONE_TASK_DATA = (payload) => ({
+    type: EDIT_ONE_TASK,
+    payload
+});
+
+export const SET_MODAL_OPEN = () => ({
+    type: OPEN_MODAL,
+});
+
+export const SET_MODAL_CLOSE = () => ({
+    type: CLOSE_MODAL,
 });
