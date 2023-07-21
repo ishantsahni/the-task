@@ -4,7 +4,10 @@ import ServerForm from "../ServerForm";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { ADD_TASK_DATA, REMOVE_GROUP_TASK_DATA } from "../../redux/Actions/common";
+import {
+  ADD_TASK_DATA,
+  REMOVE_GROUP_TASK_DATA,
+} from "../../redux/Actions/common";
 
 const style = {
   position: "absolute",
@@ -47,8 +50,9 @@ const items = [
 
 const TopBar = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalText, setModalText] = useState("");
   const dispatch = useDispatch();
-  const selectedTaskList = useSelector(state => state.selectedTaskList);
+  const selectedTaskList = useSelector((state) => state.selectedTaskList);
 
   const handleCloseModal = () => {
     setModalOpen(false);
@@ -72,15 +76,18 @@ const TopBar = () => {
       addressId: Yup.string().required("Required"),
     }),
     onSubmit: (values) => {
-      dispatch(ADD_TASK_DATA({
-        name: values.name,
-        description: values.description,
-        nat_space_id: items.filter(item => item.name === values.spaceId)[0]?.id,
-        server_nat_ip: values.addressId,
-        server_ip: "10.19.19.23",
-        status: "Error",
-        uniqueId: Date.now().toString(), 
-      }))
+      dispatch(
+        ADD_TASK_DATA({
+          name: values.name,
+          description: values.description,
+          nat_space_id: items.filter((item) => item.name === values.spaceId)[0]
+            ?.id,
+          server_nat_ip: values.addressId,
+          server_ip: "10.19.19.23",
+          status: "Error",
+          uniqueId: Date.now().toString(),
+        })
+      );
       console.log("values ", values);
     },
   });
@@ -99,7 +106,7 @@ const TopBar = () => {
               <p className="font-mulish">Create Server</p>
             </div>
             <form onSubmit={formik.handleSubmit}>
-              <ServerForm formik={formik} />
+              <ServerForm formik={formik} modalText={modalText} />
               <div className="flex justify-between mt-2">
                 <Button
                   className="!h-7 cursor-pointer"
@@ -132,7 +139,10 @@ const TopBar = () => {
       </Modal>
       <div>
         <Button
-          onClick={() => setModalOpen(true)}
+          onClick={() => {
+            setModalText("create");
+            setModalOpen(true);
+          }}
           className="!h-7"
           size="small"
           disabled={selectedTaskList.length > 0}
@@ -145,7 +155,10 @@ const TopBar = () => {
           size="small"
           variant="outlined"
           disabled={selectedTaskList.length !== 1}
-          onClick={() => console.log("edit button clicked")}
+          onClick={() => {
+            setModalText("edit");
+            setModalOpen(true);
+          }}
           sx={{ textTransform: "none" }}
           className="!text-black !border-black !mx-4 !h-7"
         >
@@ -156,10 +169,12 @@ const TopBar = () => {
           variant="outlined"
           disabled={selectedTaskList.length < 1}
           onClick={() => {
-            const list = selectedTaskList.map(item => item.uniqueId);
-            dispatch(REMOVE_GROUP_TASK_DATA({
-              removeList: list
-            }))
+            const list = selectedTaskList.map((item) => item.uniqueId);
+            dispatch(
+              REMOVE_GROUP_TASK_DATA({
+                removeList: list,
+              })
+            );
           }}
           sx={{ textTransform: "none" }}
           className="!text-black !border-black !h-7"

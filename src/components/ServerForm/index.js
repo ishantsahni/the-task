@@ -1,4 +1,5 @@
 import { InputLabel, MenuItem, Select, TextField } from "@mui/material";
+import { useSelector } from "react-redux";
 
 const items = [
   {
@@ -27,7 +28,8 @@ const items = [
   },
 ];
 
-const ServerForm = ({ formik }) => {
+const ServerForm = ({ formik, modalText }) => {
+    const selectedTaskList = useSelector(state => state.selectedTaskList);
   //   const [natSpace, setNatSpace] = useState("");
 
   //   const handleChange = (event) => {
@@ -50,7 +52,7 @@ const ServerForm = ({ formik }) => {
         type="text"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        value={formik.values.name}
+        value={modalText === "edit" ? selectedTaskList[0].name : formik.values.name}
       />
       <InputLabel className="mt-4" id="demo-simple-select-label">Description</InputLabel>
       <TextField
@@ -65,7 +67,7 @@ const ServerForm = ({ formik }) => {
         type="text"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        value={formik.values.description}
+        value={modalText === "edit" ? selectedTaskList[0].description : formik.values.description}
       />
       <InputLabel className="mt-4" id="demo-simple-select-label">NAT Space</InputLabel>
       <Select
@@ -77,6 +79,7 @@ const ServerForm = ({ formik }) => {
         // placeholder="Select NAT Space"
         //   onChange={handleChange}
         id="spaceId"
+        disabled={modalText === "edit"}
         name="spaceId"
         type="text"
         onChange={formik.handleChange}
@@ -102,7 +105,7 @@ const ServerForm = ({ formik }) => {
         type="text"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        value={formik.values.addressId}
+        value={modalText === "edit" ? selectedTaskList[0].server_nat_ip : formik.values.addressId}
       />
     </div>
   );
