@@ -135,6 +135,7 @@ const TopBar = () => {
           onClick={() => setModalOpen(true)}
           className="!h-7"
           size="small"
+          disabled={selectedTaskList.length > 0}
           variant="contained"
           sx={{ textTransform: "none" }}
         >
