@@ -58,7 +58,7 @@ const ServerForm = () => {
       addressId: Yup.string().required("Required"),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      console.log("values ", values);
     },
   });
 
