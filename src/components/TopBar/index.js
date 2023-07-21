@@ -143,6 +143,8 @@ const TopBar = () => {
         <Button
           size="small"
           variant="outlined"
+          disabled={selectedTaskList.length !== 1}
+          onClick={() => console.log("edit button clicked")}
           sx={{ textTransform: "none" }}
           className="!text-black !border-black !mx-4 !h-7"
         >
