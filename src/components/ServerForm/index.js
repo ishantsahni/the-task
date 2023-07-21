@@ -1,17 +1,9 @@
 import { InputLabel, MenuItem, Select, TextField } from "@mui/material";
+import { useFormik } from "formik";
 import { useState } from "react";
+import * as Yup from 'yup';
 
-const ServerForm = () => {
-  const [natSpace, setNatSpace] = useState("");
-
-  const handleChange = (event) => {
-    console.log("nat space ", event.target.value);
-    setNatSpace(event.target.value);
-  };
-
-  console.log("nat space ", natSpace);
-
-  const items = [
+const items = [
     {
       id: "1",
       name: "Box",
@@ -37,6 +29,36 @@ const ServerForm = () => {
       name: "GBD",
     },
   ];
+
+const ServerForm = () => {
+  const [natSpace, setNatSpace] = useState("");
+
+  const handleChange = (event) => {
+    console.log("nat space ", event.target.value);
+    setNatSpace(event.target.value);
+  };
+
+  console.log("nat space ", natSpace);
+
+  const formik = useFormik({
+    initialValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+    },
+    validationSchema: Yup.object({
+      firstName: Yup.string()
+        .max(15, 'Must be 15 characters or less')
+        .required('Required'),
+      lastName: Yup.string()
+        .max(20, 'Must be 20 characters or less')
+        .required('Required'),
+      email: Yup.string().email('Invalid email address').required('Required'),
+    }),
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
 
   return (
     <div className="flex flex-col">
