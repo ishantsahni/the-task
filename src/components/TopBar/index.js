@@ -1,6 +1,8 @@
 import { Box, Button, Modal, TextField } from "@mui/material";
 import React, { useState } from "react";
 import ServerForm from "../ServerForm";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const style = {
   position: "absolute",
@@ -21,6 +23,28 @@ const TopBar = () => {
     setModalOpen(false);
   };
 
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      description: "",
+      spaceId: "",
+      addressId: "",
+    },
+    validationSchema: Yup.object({
+      name: Yup.string()
+        .max(256, "Must be 256 characters or less")
+        .required("Required"),
+      description: Yup.string()
+        .max(256, "Must be 256 characters or less")
+        .required("Required"),
+      spaceId: Yup.string().required("Required"),
+      addressId: Yup.string().required("Required"),
+    }),
+    onSubmit: (values) => {
+      console.log("values ", values);
+    },
+  });
+
   return (
     <div className="flex justify-between items-center mb-4">
       <Modal
@@ -29,34 +53,36 @@ const TopBar = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <div>
+        <form onSubmit={formik.handleSubmit}>
+          <Box sx={style}>
             <div>
-              <p className="font-mulish">Create Server</p>
+              <div>
+                <p className="font-mulish">Create Server</p>
+              </div>
+              <ServerForm formik={formik} />
+              <div>
+                <Button
+                  className="!h-7 cursor-pointer"
+                  size="small"
+                  variant="contained"
+                  sx={{ textTransform: "none" }}
+                  onClick={() => handleCloseModal()}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  className="!h-7 cursor-pointer"
+                  size="small"
+                  variant="contained"
+                  sx={{ textTransform: "none" }}
+                  onClick={() => handleCloseModal()}
+                >
+                  Save & Close
+                </Button>
+              </div>
             </div>
-            <ServerForm />
-            <div>
-              <Button
-                className="!h-7 cursor-pointer"
-                size="small"
-                variant="contained"
-                sx={{ textTransform: "none" }}
-                onClick={() => handleCloseModal()}
-              >
-                Cancel
-              </Button>
-              <Button
-                className="!h-7 cursor-pointer"
-                size="small"
-                variant="contained"
-                sx={{ textTransform: "none" }}
-                onClick={() => handleCloseModal()}
-              >
-                Save & Close
-              </Button>
-            </div>
-          </div>
-        </Box>
+          </Box>
+        </form>
       </Modal>
       <div>
         <Button
