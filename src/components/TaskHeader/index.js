@@ -19,14 +19,15 @@ const ITEM_HEIGHT = 48;
 const TaskHeader = ({ taskInfo, setTaskInfo, items }) => {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
+  const [isChecked, setIsChecked] = useState(false);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = (value, id) => {
-    if(value === "remove") {
+    if (value === "remove") {
       console.log("called ", id);
-      dispatch(REMOVE_TASK_DATA({ uniqueId: id}))
+      dispatch(REMOVE_TASK_DATA({ uniqueId: id }));
     } else {
       console.log("edit clicked");
     }
@@ -40,6 +41,11 @@ const TaskHeader = ({ taskInfo, setTaskInfo, items }) => {
         <div className="flex">
           <Checkbox
             //    {...label}
+            checked={isChecked}
+            onChange={(e) => {
+              console.log("e ", e.target.checked);
+              setIsChecked(e.target.checked);
+            }}
             sx={{ "& .MuiSvgIcon-root": { fontSize: 20 } }}
             className="!p-0 !h-[20px] !mr-3"
             defaultChecked={false}
@@ -55,7 +61,11 @@ const TaskHeader = ({ taskInfo, setTaskInfo, items }) => {
           <img
             alt="success"
             className="h-3 w-3 mr-1 mt-0.5"
-            src={items.status === "Online" ? Resources.images.mainPage.success : Resources.images.mainPage.error}
+            src={
+              items.status === "Online"
+                ? Resources.images.mainPage.success
+                : Resources.images.mainPage.error
+            }
           />
           <p className="font-semibold text-[0.7rem] text-nero">
             {items.status}
@@ -78,8 +88,12 @@ const TaskHeader = ({ taskInfo, setTaskInfo, items }) => {
             },
           }}
         >
-          <MenuItem onClick={() => handleClose("remove", items.uniqueId)}>{"Remove"}</MenuItem>
-          <MenuItem onClick={() => handleClose("edit", items.uniqueId)}>{"Edit"}</MenuItem>
+          <MenuItem onClick={() => handleClose("remove", items.uniqueId)}>
+            {"Remove"}
+          </MenuItem>
+          <MenuItem onClick={() => handleClose("edit", items.uniqueId)}>
+            {"Edit"}
+          </MenuItem>
         </Menu>
         <BsThreeDots
           onClick={(e) => handleClick(e)}
