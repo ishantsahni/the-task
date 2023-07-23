@@ -8,6 +8,7 @@ import {
   ADD_TASK_DATA,
   EDIT_TASK_DATA,
   REMOVE_GROUP_TASK_DATA,
+  SET_EMPTY_SELECTED_TASK_DATA,
   SET_MODAL_CLOSE,
 } from "../../redux/Actions/common";
 
@@ -54,7 +55,7 @@ const TopBar = ({ setSearchString }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalText, setModalText] = useState("");
   const dispatch = useDispatch();
-  const isModalOpen = useSelector(state => state.isModalOpen.isModalOpen);
+  const isModalOpen = useSelector((state) => state.isModalOpen.isModalOpen);
   const selectedTaskList = useSelector((state) => state.selectedTaskList);
 
   const handleCloseModal = () => {
@@ -80,21 +81,30 @@ const TopBar = ({ setSearchString }) => {
       addressId: Yup.string().required("Required"),
     }),
     onSubmit: (values) => {
-      console.log("values ", values, items.filter((item) => item.name === values.spaceId));
-      if(modalText === "") {
-        dispatch(EDIT_TASK_DATA({
-          ...selectedTaskList[0],
-          name: values.name,
-          description: values.description,
-          server_nat_ip: values.addressId
-        }))
+      console.log(
+        "values ",
+        values,
+        modalText,
+        selectedTaskList,
+        items.filter((item) => item.name === values.spaceId)
+      );
+      if (modalText === "edit") {
+        dispatch(
+          EDIT_TASK_DATA({
+            ...selectedTaskList[0],
+            name: values.name,
+            description: values.description,
+            server_nat_ip: values.addressId,
+          })
+        );
       } else {
         dispatch(
           ADD_TASK_DATA({
             name: values.name,
             description: values.description,
-            nat_space_id: items.filter((item) => item.name === values.spaceId)[0]
-              ?.id,
+            nat_space_id: items.filter(
+              (item) => item.name === values.spaceId
+            )[0]?.id,
             server_nat_ip: values.addressId,
             server_ip: "10.19.19.23",
             status: "Error",
@@ -103,6 +113,8 @@ const TopBar = ({ setSearchString }) => {
         );
         setModalText("");
       }
+      dispatch(SET_EMPTY_SELECTED_TASK_DATA());
+
       console.log("values ", values);
     },
   });
@@ -130,6 +142,7 @@ const TopBar = ({ setSearchString }) => {
                   sx={{ textTransform: "none" }}
                   onClick={() => {
                     handleCloseModal();
+                    dispatch(SET_EMPTY_SELECTED_TASK_DATA());
                   }}
                 >
                   Cancel
@@ -171,7 +184,7 @@ const TopBar = ({ setSearchString }) => {
           variant="outlined"
           disabled={selectedTaskList.length !== 1}
           onClick={() => {
-            setModalText("");
+            setModalText("edit");
             setModalOpen(true);
           }}
           sx={{ textTransform: "none" }}
@@ -190,6 +203,7 @@ const TopBar = ({ setSearchString }) => {
                 removeList: list,
               })
             );
+            dispatch(SET_EMPTY_SELECTED_TASK_DATA());
           }}
           sx={{ textTransform: "none" }}
           className="!text-black !border-black !h-7"
