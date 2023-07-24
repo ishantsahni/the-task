@@ -11,6 +11,7 @@ import {
   SET_EMPTY_SELECTED_TASK_DATA,
   SET_MODAL_CLOSE,
 } from "../../redux/Actions/common";
+import { items } from "../../helpers";
 
 const style = {
   position: "absolute",
@@ -23,33 +24,6 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-
-const items = [
-  {
-    id: "1",
-    name: "Box",
-  },
-  {
-    id: "12",
-    name: "DoS",
-  },
-  {
-    id: "13",
-    name: "Server Box",
-  },
-  {
-    id: "14",
-    name: "Nat-vat",
-  },
-  {
-    id: "15",
-    name: "Zth-vtc-1275844",
-  },
-  {
-    id: "17",
-    name: "GBD",
-  },
-];
 
 const TopBar = ({ setSearchString }) => {
   const [modalOpen, setModalOpen] = useState(false);
