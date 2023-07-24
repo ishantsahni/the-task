@@ -17,7 +17,7 @@ const TasksBox = () => {
         <TopBar setSearchString={setSearchString} />
         {filteredTaskArray.length > 0 &&
           filteredTaskArray.map((items, index) => (
-            <TaskItem key={index} items={items} />
+            <TaskItem key={items.uniqueId} items={items} />
           ))}
       </div>
     </div>
