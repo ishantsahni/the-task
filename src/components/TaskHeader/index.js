@@ -26,14 +26,11 @@ const TaskHeader = ({ taskInfo, setTaskInfo, items }) => {
   };
   const handleClose = (value, id) => {
     if (value === "remove") {
-      console.log("called ", id);
       dispatch(REMOVE_TASK_DATA({ uniqueId: id }));
     } else {
-      console.log("edit clicked");
       dispatch(SET_MODAL_OPEN());
       dispatch(SET_EDIT_ONE_TASK_DATA(items));
     }
-    console.log("value ", value);
     setAnchorEl(null);
   };
 
@@ -50,7 +47,6 @@ const TaskHeader = ({ taskInfo, setTaskInfo, items }) => {
               } else {
                 dispatch(REMOVE_SELECTED_TASK_DATA(items));
               }
-              console.log("e ", e.target.checked);
               setIsChecked(e.target.checked);
             }}
             sx={{ "& .MuiSvgIcon-root": { fontSize: 20 } }}

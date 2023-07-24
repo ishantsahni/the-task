@@ -81,13 +81,6 @@ const TopBar = ({ setSearchString }) => {
       addressId: Yup.string().required("Required"),
     }),
     onSubmit: (values) => {
-      console.log(
-        "values ",
-        values,
-        modalText,
-        selectedTaskList,
-        items.filter((item) => item.name === values.spaceId)
-      );
       if (modalText === "edit") {
         dispatch(
           EDIT_TASK_DATA({
@@ -115,7 +108,6 @@ const TopBar = ({ setSearchString }) => {
       }
       dispatch(SET_EMPTY_SELECTED_TASK_DATA());
 
-      console.log("values ", values);
     },
   });
 
@@ -223,7 +215,6 @@ const TopBar = ({ setSearchString }) => {
           }}
           autoComplete="off"
           onChange={(event) => {
-            console.log("event value ", event.target.value);
             setSearchString(event.target.value);
           }}
           placeholder="Search by name.."

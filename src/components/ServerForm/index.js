@@ -30,12 +30,6 @@ const items = [
 
 const ServerForm = ({ formik, modalText }) => {
     const selectedTaskList = useSelector(state => state.selectedTaskList);
-  //   const [natSpace, setNatSpace] = useState("");
-
-  //   const handleChange = (event) => {
-  //     console.log("nat space ", event.target.value);
-  //     setNatSpace(event.target.value);
-  //   };
 
   return (
     <div className="flex flex-col">
