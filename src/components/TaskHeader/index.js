@@ -39,7 +39,6 @@ const TaskHeader = ({ taskInfo, setTaskInfo, items }) => {
       <div className="flex w-2/5 justify-between">
         <div className="flex">
           <Checkbox
-            //    {...label}
             checked={isChecked}
             onChange={(e) => {
               if(e.target.checked) {
